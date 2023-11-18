@@ -6,23 +6,23 @@ if not present then return end
 
 local present, color = pcall(require, "plugins.colors." .. theme)
 if present then
-  base16.setup(color)
+	base16.setup(color)
 else
-  local ok, err = pcall(cmd, ("colorscheme base16-" .. theme))
-  -- local ok, err = pcall(cmd, ("colorscheme " .. theme))
-  if not ok then
-    _G.theme = "paradise"
-    color = require("colors." .. _G.theme)
-    base16.setup(color)
-    print(err)
-  end
+	local ok, err = pcall(cmd, ("colorscheme base16-" .. theme))
+	-- local ok, err = pcall(cmd, ("colorscheme " .. theme))
+	if not ok then
+		_G.theme = "paradise"
+		color = require("colors." .. _G.theme)
+		base16.setup(color)
+		print(err)
+	end
 end
 
 -- Highlights 
 local function hl(highlight, fg, bg)
-  if fg == nil then fg = "none" end
-  if bg == nil then bg = "none" end
-  cmd("hi " .. highlight .. " guifg=" .. fg .. " guibg=" .. bg)
+	if fg == nil then fg = "none" end
+	if bg == nil then bg = "none" end
+	cmd("hi " .. highlight .. " guifg=" .. fg .. " guibg=" .. bg)
 end
 
 -- Status Line

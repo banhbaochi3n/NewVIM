@@ -1,49 +1,59 @@
-local opts = { noremap = true, silent = true }
-local term_opts = { silent = true }
-local builtin = require('telescope.builtin')
+-- local opts = { noremap = true, silent = true }
+-- local term_opts = { silent = true }
+-- local builtin = require('telescope.builtin')
+--
+-- -- Shorten function name
+-- local keymap = vim.api.nvim_set_keymap
 
--- Shorten function name
-local keymap = vim.api.nvim_set_keymap
+local function map(mode, keys, command)
+    vim.api.nvim_set_keymap(mode, keys, command, { noremap = true, silent = true })
+end
 
 -- Remap space as leader key
-keymap("", "<Space>", "<Nop>", opts)
+map("", "<Space>", "<Nop>")
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Press jk fast to exit insert mode 
-keymap("i", "jk", "<ESC>", opts)
-keymap("i", "kj", "<ESC>", opts)
+-- Navigation stuff
+map("n", "<TAB>", ":bnext<CR>")
+map("n", "<S-TAB>", ":bprev<CR>")
+map("n", "hs", ":split<CR>")
+map("n", "vs", ":vs<CR>")
 
--- NvimTree keymaps 
-keymap("n", "<Space>t", ":NvimTreeToggle<CR>", opts)
-keymap("n", "<Space>tf", ":NvimTreeFocus<CR>", opts)
+-- Press jk fast to exit insert mode 
+map("i", "jk", "<ESC>")
+map("i", "kj", "<ESC>")
+
+-- Terminal
+map("n", "<leader>v", ":vs +terminal | startinsert<CR>")
+map("n", "<leader>h", ":split +terminal | startinsert<CR>")
 
 -- Better paste
-keymap("v", "p", '"_dP', opts)
+map("v", "p", '"_dP')
 
 -- Move text up and down
-keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
-keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
-keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
-keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
-keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
-keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
+map("x", "J", ":move '>+1<CR>gv-gv")
+map("x", "K", ":move '<-2<CR>gv-gv")
+map("x", "<A-j>", ":move '>+1<CR>gv-gv")
+map("x", "<A-k>", ":move '<-2<CR>gv-gv")
+map("n", "<A-j>", "<Esc>:m .+1<CR>==gi")
+map("n", "<A-k>", "<Esc>:m .-2<CR>==gi")
 
 -- Move between tabs
-keymap("n", "<leader>1", "1gt", opts)
-keymap("n", "<leader>2", "2gt", opts)
-keymap("n", "<leader>3", "3gt", opts)
-keymap("n", "<leader>4", "4gt", opts)
-keymap("n", "<leader>5", "5gt", opts)
-keymap("n", "<leader>6", "6gt", opts)
-keymap("n", "<leader>7", "7gt", opts)
-keymap("n", "<leader>8", "8gt", opts)
-keymap("n", "<leader>9", "9gt", opts)
-keymap("n", "<leader>w", ":bd<CR>", opts)
-keymap("n", "<leader>n", ":tabnew<CR>", opts)
+map("n", "<leader>1", "1gt")
+map("n", "<leader>2", "2gt")
+map("n", "<leader>3", "3gt")
+map("n", "<leader>4", "4gt")
+map("n", "<leader>5", "5gt")
+map("n", "<leader>6", "6gt")
+map("n", "<leader>7", "7gt")
+map("n", "<leader>8", "8gt")
+map("n", "<leader>9", "9gt")
+map("n", "<leader>w", ":bd<CR>")
+map("n", "<leader>n", ":tabnew<CR>")
 
 -- Telescope keybinds
-vim.keymap.set('n', 'ff', builtin.find_files, {})
-vim.keymap.set('n', 'fg', builtin.live_grep, {})
-vim.keymap.set('n', 'fb', builtin.buffers, {})
-vim.keymap.set('n', 'fh', builtin.help_tags, {})
+map('n', 'ff', ":Telescope find_files<CR>")
+map('n', 'fg', ":Telescope live_grep<CR>")
+map('n', 'fb', ":Telescope buffers<CR>")
+map('n', 'fh', ":Telescope help_tags<CR>")

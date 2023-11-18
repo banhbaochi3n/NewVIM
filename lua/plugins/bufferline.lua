@@ -8,4 +8,11 @@ require("bufferline").setup({
         --     underline = "#B66467",
         -- },
     },
+    options = {
+        hover = {
+            enabled = true,
+            delay = 200,
+            reveal = { "close" }
+        }
+    }
 })

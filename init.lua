@@ -1,3 +1,5 @@
+
+-- Theme
 _G.theme = "paradise"
 
 -- Load configuration files
@@ -16,4 +18,4 @@ require("plugins.treesitter")
 require("plugins.neoscroll")
 require("plugins.colorizer")
 require("plugins.bufferline")
-
+require("plugins.indent-blankline")

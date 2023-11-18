@@ -44,6 +44,26 @@ require("lazy").setup({
         dependencies = 'nvim-tree/nvim-web-devicons'
     },
 
+    -- Leetcode
+    {
+	    "kawre/leetcode.nvim",
+	    build = ":TSUpdate html",
+	    dependencies = {
+		    "nvim-telescope/telescope.nvim",
+		    "nvim-lua/plenary.nvim",
+		    "MunifTanjim/nui.nvim",
+
+		    -- optional
+		    "nvim-treesitter/nvim-treesitter",
+		    "nvim-tree/nvim-web-devicons",
+	    },
+
+	    opts = {
+		    lang = "rust",
+			directory = vim.fn.stdpath("data") .. "/leetcode/src",
+	    },
+    },
+
     -- Cool 
     "tpope/vim-eunuch",
 
@@ -81,7 +101,7 @@ require("lazy").setup({
     "karb94/neoscroll.nvim",
 
     -- Easy indent
-    -- "lukas-reineke/indent-blankline.nvim",
+    "lukas-reineke/indent-blankline.nvim",
 
     -- Edit surrounding quotes and brackets with ease
     "kylechui/nvim-surround",

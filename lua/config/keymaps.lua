@@ -34,10 +34,10 @@ map("v", "p", '"_dP')
 -- Move text up and down
 map("x", "J", ":move '>+1<CR>gv-gv")
 map("x", "K", ":move '<-2<CR>gv-gv")
-map("x", "<A-j>", ":move '>+1<CR>gv-gv")
-map("x", "<A-k>", ":move '<-2<CR>gv-gv")
-map("n", "<A-j>", "<Esc>:m .+1<CR>==gi")
-map("n", "<A-k>", "<Esc>:m .-2<CR>==gi")
+
+-- Comment
+map("n", "<leader>/", "<Plug>(comment_toggle_linewise_current)")
+map("v", "<leader>/", "<Plug>(comment_toggle_linewise_visual)")
 
 -- Move between tabs
 map("n", "<leader>1", "1gt")
@@ -52,8 +52,18 @@ map("n", "<leader>9", "9gt")
 map("n", "<leader>w", ":bd<CR>")
 map("n", "<leader>n", ":tabnew<CR>")
 
+-- Normal Map
+map("n", "<TAB>", ":bnext<CR>")
+map("n", "<S-TAB>", ":bprev<CR>")
+map("n", "hs", ":split<CR>")
+map("n", "vs", ":vs<CR>")
+
+-- Explore
+map("n", "C-N", ":Sex<CR>")
+
 -- Telescope keybinds
 map('n', 'ff', ":Telescope find_files<CR>")
 map('n', 'fg', ":Telescope live_grep<CR>")
 map('n', 'fb', ":Telescope buffers<CR>")
 map('n', 'fh', ":Telescope help_tags<CR>")
+

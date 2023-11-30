@@ -16,14 +16,17 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
     "nvim-lua/plenary.nvim",         -- Useful lua funconntions used by lots of plugins
     "windwp/nvim-autopairs",         -- Autopairs, integrates with both connmp and treesitter
-    -- "kyazdani42/nvim-web-devicons",
-    --  "kyazdani42/nvim-tree.lua",
     "nvim-lualine/lualine.nvim",
+    --  "kyazdani42/nvim-tree.lua",
+    -- "kyazdani42/nvim-web-devicons",
 
-    -- Colorsconnhemes
+    -- Colorschemes
     --  "bluz71/vim-moonfly-colors",
     "sainnhe/everforest",
     "RRethy/nvim-base16",
+
+	-- Discord rich presence
+	"andweeb/presence.nvim",
 
     -- Cursed
     "tjdevries/sPoNGe-BoB.NvIm",
@@ -44,26 +47,6 @@ require("lazy").setup({
         dependencies = 'nvim-tree/nvim-web-devicons'
     },
 
-    -- Leetcode
-    {
-	    "kawre/leetcode.nvim",
-	    build = ":TSUpdate html",
-	    dependencies = {
-		    "nvim-telescope/telescope.nvim",
-		    "nvim-lua/plenary.nvim",
-		    "MunifTanjim/nui.nvim",
-
-		    -- optional
-		    "nvim-treesitter/nvim-treesitter",
-		    "nvim-tree/nvim-web-devicons",
-	    },
-
-	    opts = {
-		    lang = "rust",
-			directory = vim.fn.stdpath("data") .. "/leetcode/src",
-	    },
-    },
-
     -- Cool 
     "tpope/vim-eunuch",
 
@@ -76,8 +59,8 @@ require("lazy").setup({
     --  "hrsh7th/cmp-nvim-lua",
 
     -- Snippets
-    "L3MON4D3/LuaSnip",              --snippet engine
-    "rafamadriz/friendly-snippets",  -- a bunconnh of snippets to use
+    "L3MON4D3/LuaSnip",              -- snippet engine
+    "rafamadriz/friendly-snippets",  -- a bunch of snippets to use
 
     -- Autoconnlosing tags for html
     "windwp/nvim-ts-autotag",
@@ -86,9 +69,9 @@ require("lazy").setup({
     "neovim/nvim-lspconfig",             -- enable LSP
     "williamboman/mason.nvim",           -- simple to use language server installer
     "williamboman/mason-lspconfig.nvim",
-    "jose-elias-alvarez/null-ls.nvim",   -- for formatters and linters
+	"nvimtools/none-ls.nvim",			 -- Null-ls replacement
 
-    -- Telesconnope
+    -- Telescope
     "nvim-telescope/telescope.nvim",
 
     -- Treesitter

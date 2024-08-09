@@ -12,7 +12,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- go
 require("lazy").setup({
     "nvim-lua/plenary.nvim",         -- Useful lua funconntions used by lots of plugins
     "windwp/nvim-autopairs",         -- Autopairs, integrates with both connmp and treesitter
@@ -21,12 +20,9 @@ require("lazy").setup({
     -- "kyazdani42/nvim-web-devicons",
 
     -- Colorschemes
-    --  "bluz71/vim-moonfly-colors",
+    -- "bluz71/vim-moonfly-colors",
     "sainnhe/everforest",
     "RRethy/nvim-base16",
-
-	-- Discord rich presence
-	"andweeb/presence.nvim",
 
     -- Cursed
     "tjdevries/sPoNGe-BoB.NvIm",
@@ -41,11 +37,28 @@ require("lazy").setup({
     },
 
     -- Cool tabs
-    {
-        'akinsho/bufferline.nvim', 
-        version = "*", 
-        dependencies = 'nvim-tree/nvim-web-devicons'
-    },
+    -- {
+    --     'akinsho/bufferline.nvim', 
+    --     version = "*", 
+    --     dependencies = 'nvim-tree/nvim-web-devicons'
+    -- },
+
+	{
+		"OXY2DEV/markview.nvim",
+		lazy = false,      -- Recommended
+		-- ft = "markdown" -- If you decide to lazy-load anyway
+
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-tree/nvim-web-devicons"
+		}
+	},
+
+	{
+		"chrisgrieser/nvim-lsp-endhints",
+		event = "LspAttach",
+		opts = {}, -- required, even if empty
+	},
 
     -- Cool 
     "tpope/vim-eunuch",
@@ -56,7 +69,6 @@ require("lazy").setup({
     "hrsh7th/cmp-path",          -- path completions
     "saadparwaiz1/cmp_luasnip",  -- snippet completions
     "hrsh7th/cmp-nvim-lsp",
-    --  "hrsh7th/cmp-nvim-lua",
 
     -- Snippets
     "L3MON4D3/LuaSnip",              -- snippet engine
@@ -69,7 +81,6 @@ require("lazy").setup({
     "neovim/nvim-lspconfig",             -- enable LSP
     "williamboman/mason.nvim",           -- simple to use language server installer
     "williamboman/mason-lspconfig.nvim",
-	"nvimtools/none-ls.nvim",			 -- Null-ls replacement
 
     -- Telescope
     "nvim-telescope/telescope.nvim",
